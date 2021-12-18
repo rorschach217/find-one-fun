@@ -27,4 +27,4 @@ next number is : 4 * 1/2 = 2
 
 next number is : 2 * 1/2 = 1
 
-# Try it. any number at end you will get 1.
+# Try it. any number, at end you will get 1.
