@@ -1,0 +1,53 @@
+<html>
+<head>
+<script>
+	function getOne(event){
+		//196 infinite calculation number
+		event.preventDefault();
+		let number = document.getElementById("number").valueAsNumber;
+		console.log(number)
+		let finalOutput = ""
+		if (number == 1){
+			document.getElementById("result").innerHTML = "Number is 1 !!!";
+			document.getElementById("_form").reset();
+			return false;
+		}
+		function loopToFindOne(){
+			if((number % 2) == 0){
+				finalOutput += "its Even so next number is : " + number + " * 1/2 = " + (number/2) + "<br>";
+				number = number / 2;
+			}
+			else{
+				finalOutput += "its Odd so next number is : (" + number + " * 3) + 1 = " + ((number*3)+2) + "<br>";
+				number = (number*3) + 1;
+			}
+			document.getElementById("result").innerHTML = finalOutput;
+			if (number != 1){
+				setTimeout(loopToFindOne, 500)
+			}
+		}
+		loopToFindOne();
+		document.getElementById("_form").reset();
+	}
+	function _clear(){
+		document.getElementById("result").innerHTML = "";
+		document.getElementById("_form").reset();
+	}
+</script>
+</head>
+<body>
+	<p>Magic one</p>
+	<p>If you take any number, and based on it is Even or Odd, if you do number of calculation at the end you will get number 1</p>
+	<form id="_form">
+		<label for="number">Enter any number:</label><br>
+		<input type="number" id="number" name="number" step="0.01" value=""><br>
+		<button type="submit" >Submit</button>
+		<button type="button" onclick="_clear()">Clear</button>
+	</form>
+	<p id="result"></p>
+	<script>
+		let _form = document.getElementById("_form")
+		_form.addEventListener("submit", getOne)
+	</script>
+</body>
+</html>
